@@ -12,6 +12,7 @@
 ## PROGRAMS ################################################################
 exec --no-startup-id feh --bg-scale /home/flo/.wallpaper/wallpaper
 exec_always compton -b -c -f
+exec_always exec $(echo $HOME)/.config/i3/check_battery.sh >> log
 ############################################################################
 set $mod Mod4
 
@@ -230,7 +231,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
 #bindsym Print exec deepin-screenshot
 
-bindsym $mod+l exec i3lock
+bindsym $mod+l exec i3lock -c a6bdbd -n
 
 #for_window [class="APP" instance="app"] floating enable
 for_window [class="Arandr" instance="arandr"] floating enable
+
