@@ -12,7 +12,7 @@
 ## PROGRAMS ################################################################
 exec --no-startup-id feh --bg-scale /home/flo/.wallpaper/wallpaper
 exec_always compton -b -c -f
-exec_always exec $(echo $HOME)/.config/i3/check_battery.sh >> log
+exec_always exec $HOME/.config/i3/check_battery.sh >> $HOME/.config/i3/.log
 ############################################################################
 set $mod Mod4
 
