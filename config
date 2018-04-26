@@ -13,11 +13,19 @@
 exec --no-startup-id feh --bg-scale /home/flo/.wallpaper/wallpaper
 exec_always compton -b -c -f
 exec_always exec $HOME/.config/i3/check_battery.sh >> $HOME/.config/i3/.log
+
+# see wifi network
+exec --no-startup-id nm-applet
+
+bindsym $mod+Ctrl+Shift+l exec i3lock -c
+
+bindsym $mod+n exec google-chrome
+bindsym $mod+m exec arandr
 ############################################################################
 set $mod Mod4
 
 ## keyboard layout
-bindsyn LALT+LSHIFT exec --no-startup-id setxkbmap -layout us -variant intl
+bindsym LALT+LSHIFT exec --no-startup-id setxkbmap -layout us -variant intl
 exec_always "setxkbmap -layout us,us -variant intl,, -option grp:alt_shift_toggle"
 
 
@@ -50,50 +58,38 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec rofi -show run -bg "#A5BCBC"  -bc "#A5BCBC" -bw 0 -opacity "85" -font "Monoid 15" -lines 6 
+bindsym $mod+d exec rofi -show run -bg "#303030"  -bc "#303030" -bw 0 -opacity "85" -lines 6 
 
 
 # change focus
-# bindsym $mod+j focus left
-# bindsym $mod+k focus down
-# bindsym $mod+l focus up
-# bindsym $mod+semicolon focus right
-
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left exec i3-msg border pixel 1;   focus left
-bindsym $mod+Down exec i3-msg border pixel 1;   focus down
-bindsym $mod+Up exec i3-msg border pixel 1;     focus up
-bindsym $mod+Right exec i3-msg border pixel 1;  focus right
-bindsym --release $mod+Left exec i3-msg border pixel 0
-bindsym --release $mod+Down exec i3-msg border pixel 0
-bindsym --release $mod+Up exec i3-msg border pixel 0
-bindsym --release $mod+Right exec i3-msg border pixel 0
+bindsym $mod+h exec i3-msg border pixel 1;   focus left
+bindsym $mod+j exec i3-msg border pixel 1;   focus down
+bindsym $mod+k exec i3-msg border pixel 1;     focus up
+bindsym $mod+l exec i3-msg border pixel 1;  focus right
+bindsym --release $mod+h exec i3-msg border pixel 0
+bindsym --release $mod+j exec i3-msg border pixel 0
+bindsym --release $mod+k exec i3-msg border pixel 0
+bindsym --release $mod+l exec i3-msg border pixel 0
 
 # move focused window
-# bindsym $mod+Shift+j move left
-# bindsym $mod+Shift+k move down
-# bindsym $mod+Shift+l move up
-# bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h    exec i3-msg border pixel 1; move left   50px
+bindsym $mod+Shift+j    exec i3-msg border pixel 1; move down   50px
+bindsym $mod+Shift+k    exec i3-msg border pixel 1; move up     50px
+bindsym $mod+Shift+l    exec i3-msg border pixel 1; move right  50px
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left     exec i3-msg border pixel 1; move left   50px
-bindsym $mod+Shift+Down     exec i3-msg border pixel 1; move down   50px
-bindsym $mod+Shift+Up       exec i3-msg border pixel 1; move up     50px
-bindsym $mod+Shift+Right    exec i3-msg border pixel 1; move right  50px
+bindsym --release $mod+Shift+h exec i3-msg border pixel 0
+bindsym --release $mod+Shift+j exec i3-msg border pixel 0
+bindsym --release $mod+Shift+k exec i3-msg border pixel 0
+bindsym --release $mod+Shift+l exec i3-msg border pixel 0
 
-bindsym --release $mod+Shift+Left exec i3-msg border pixel 0
-bindsym --release $mod+Shift+Down exec i3-msg border pixel 0
-bindsym --release $mod+Shift+Up exec i3-msg border pixel 0
-bindsym --release $mod+Shift+Rightexec i3-msg border pixel 0
-
-
+# class         # border    bg          text        indicator   child_border
+client.focused  #ffffff     #ffffff     #ffffff     #ffffff     #ffffff 
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Left split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Up split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -110,10 +106,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -148,9 +144,9 @@ workspace_auto_back_and_forth yes
 popup_during_fullscreen leave_fullscreen 
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+Ctrl+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -186,21 +182,19 @@ bindsym $mod+r mode "resize"
 bar {
 	font pango: Monoid 9
 	colors {
-		background #a6bdbd
+		background #303030
 		
-		# <colorclass> <border> <background> <text>
-		focused_workspace	#a6bdbd #a6bdbd #ffffff
-		active_workspace 	#a6bdbd #a6bdbd #000000
-		inactive_workspace 	#a6bdbd #a6bdbd #000000
+		# <colorclass> <border> <background> <text> <indicator> <chid_border>
+		focused_workspace   #303030 #303030 #ffffff
+		active_workspace 	#303030 #303030 #000000
+		inactive_workspace 	#303030 #303030 #000000
 		urgent_workspace	#900000 #900000 #ffffff
 	}
 	status_command i3status
 }
 
 # Gaps
-gaps inner 8
-gaps outer 0
-smart_gaps on
+#gaps inner 8 #gaps outer 0 #smart_gaps on
 
 # Remove top bar
 new_window pixel 0
@@ -211,8 +205,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # Touchpad controls
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
@@ -223,15 +217,7 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# change layout keyboard
 
-
-# see wifi network
-#exec --no-startup-id nm-applet
-
-#bindsym Print exec deepin-screenshot
-
-bindsym $mod+l exec i3lock -c a6bdbd -n
 
 #for_window [class="APP" instance="app"] floating enable
 for_window [class="Arandr" instance="arandr"] floating enable
