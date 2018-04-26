@@ -21,6 +21,7 @@ bindsym $mod+Ctrl+Shift+l exec i3lock -c
 
 bindsym $mod+n exec google-chrome
 bindsym $mod+m exec arandr
+bindsym $mod+Tab exec rofi -show window
 ############################################################################
 set $mod Mod4
 
@@ -58,8 +59,7 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec rofi -show run -bg "#303030"  -bc "#303030" -bw 0 -opacity "85" -lines 6 
-
+bindsym $mod+d exec rofi -show run 
 
 # change focus
 bindsym $mod+h exec i3-msg border pixel 1;   focus left
@@ -83,7 +83,7 @@ bindsym --release $mod+Shift+k exec i3-msg border pixel 0
 bindsym --release $mod+Shift+l exec i3-msg border pixel 0
 
 # class         # border    bg          text        indicator   child_border
-client.focused  #ffffff     #ffffff     #ffffff     #ffffff     #ffffff 
+client.focused  #ffffff     #ffffff     #000000     #ffffff     #ffffff 
 
 # split in horizontal orientation
 bindsym $mod+Left split h
