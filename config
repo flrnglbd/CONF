@@ -17,7 +17,7 @@ exec_always exec $HOME/.config/i3/check_battery.sh >> $HOME/.config/i3/.log
 # see wifi network
 exec --no-startup-id nm-applet
 
-bindsym $mod+Ctrl+Shift+l exec i3lock -c
+bindsym $mod+Ctrl+Shift+l exec i3lock -c 303030 
 
 bindsym $mod+n exec google-chrome
 bindsym $mod+m exec arandr
