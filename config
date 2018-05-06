@@ -22,6 +22,8 @@ bindsym $mod+Ctrl+Shift+l exec i3lock -c 303030
 bindsym $mod+n exec google-chrome
 bindsym $mod+m exec arandr
 bindsym $mod+Tab exec rofi -show window
+
+bindsym Print exec gnome-screenshot -a
 ############################################################################
 set $mod Mod4
 
