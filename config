@@ -21,7 +21,7 @@ bindsym $mod+Ctrl+Shift+l exec i3lock -c 303030
 
 bindsym $mod+n exec google-chrome
 bindsym $mod+m exec arandr
-bindsym $mod+Tab exec rofi -show window
+bindsym $mod+Tab exec rofi -show
 
 bindsym Print exec gnome-screenshot -a
 ############################################################################
@@ -61,7 +61,6 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec rofi -show run 
 
 # change focus
 bindsym $mod+h exec i3-msg border pixel 1;   focus left
@@ -217,3 +216,4 @@ bindsym XF86AudioPrev exec playerctl previous
 for_window [class="Arandr" instance="arandr"] floating enable
 for_window [class="R_x11" instance="r_x11"] floating enable
 
+focus_follows_mouse no
