@@ -12,7 +12,7 @@
 ## PROGRAMS ################################################################
 exec --no-startup-id feh --bg-scale /home/flo/.wallpaper/wallpaper
 exec_always compton -b -c -f
-exec_always exec $HOME/.config/i3/check_battery.sh >> $HOME/.config/i3/.log
+exec $HOME/.config/i3/check_battery.sh >> $HOME/.config/i3/.log
 
 # see wifi network
 exec --no-startup-id nm-applet
@@ -61,6 +61,7 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
+bindsym $mod+d exec rofi -show run 
 
 # change focus
 bindsym $mod+h exec i3-msg border pixel 1;   focus left
@@ -124,6 +125,7 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -175,7 +177,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	font pango: Monoid 9
+	font pango: Monoid 8
 	colors {
 		background #303030
 		
@@ -185,7 +187,7 @@ bar {
 		inactive_workspace 	#303030 #303030 #000000
 		urgent_workspace	#900000 #900000 #ffffff
 	}
-	status_command i3status
+	status_command i3blocks
 }
 
 # Gaps
@@ -215,5 +217,6 @@ bindsym XF86AudioPrev exec playerctl previous
 # WM_CLASS(STRING) = INSTANCE, CLASS
 for_window [class="Arandr" instance="arandr"] floating enable
 for_window [class="R_x11" instance="r_x11"] floating enable
+for_window [class="Gnome-system-monitor" instance="gnome-system-monitor" ] floating enable
 
 focus_follows_mouse no
